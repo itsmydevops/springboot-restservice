@@ -1,4 +1,4 @@
-package com.devops.test
+package com.devops.test;
 
 public class Test{
 	
