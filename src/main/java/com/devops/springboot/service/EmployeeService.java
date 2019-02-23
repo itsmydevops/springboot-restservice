@@ -1,58 +1,47 @@
 package com.devops.springboot.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.devops.springboot.dao.EmployeeRepository;
 import com.devops.springboot.model.Employee;
 
 @Service
+@Transactional
 public class EmployeeService {
 
-	private List<Employee> empList = new ArrayList<>(Arrays.asList(
-			new Employee(111111, "Srini", "Arizona"),
-			new Employee(222222, "Siridevi", "Vinjamur"), 
-			new Employee(333333, "Chandu", "kadapa")));
+	private final Logger logger = LoggerFactory.getLogger(EmployeeService.class);
+	
+    @Autowired
+    EmployeeRepository employeeRepository;
 
 	public List<Employee> getAllEmployees() {
-		return empList;
-
+		logger.info("employeeRepository : " + employeeRepository);
+		
+		List<Employee> list = (List<Employee>)employeeRepository.findAll();
+		logger.info("Employee List : " + list);
+		
+		return list;
 	}
 
-	public Employee getEmployee(int id) {
-		Employee e = null;
-		for (int i = 0; i < empList.size(); i++) {
-			e = empList.get(i);
-			if (e.getEmployee_id() == id) {
-				return e;
-			}
-		}
-		return null;
+	public Employee getEmployee(long id) {
+		return employeeRepository.findById(id).get();
 	}
 
 	public void addEmployee(Employee employee) {
-		empList.add(employee);
+		employeeRepository.save(employee);
 	}
 
 	public void updateEmployee(int id, Employee employee) {
-		for (int i = 0; i < empList.size(); i++) {
-			Employee e = empList.get(i);
-			if (e.getEmployee_id() == id) {
-				empList.set(i, employee);
-				return;
-			}
-		}
+		employeeRepository.save(employee);
 	}
 
-	public void deleteEmployee(int id) {
-		for (int i = 0; i < empList.size(); i++) {
-			Employee e = empList.get(i);
-			if (e.getEmployee_id() == id) {
-				empList.remove(e);
-				return;
-			}
-		}
+	public void deleteEmployee(long id) {
+		employeeRepository.delete(getEmployee(id));
 	}
 }
