@@ -1,9 +1,25 @@
 package com.devops.springboot.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="EMPLOYEE")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Employee {
 
-	private int employee_id;
+	@Id
+	@Column(name="id")
+	private long employee_id;
+	
+	@Column(name="name")
 	private String employee_name;
+	
+	@Column(name="country")
 	private String employee_city;
 	
 	public Employee() {
@@ -17,7 +33,7 @@ public class Employee {
 		this.employee_city = eaddress;
 	}
 	
-	public int getEmployee_id() {
+	public long getEmployee_id() {
 		return employee_id;
 	}
 
@@ -40,7 +56,4 @@ public class Employee {
 	public void setEmployee_city(String employee_city) {
 		this.employee_city = employee_city;
 	}
-
-
-	
 }
