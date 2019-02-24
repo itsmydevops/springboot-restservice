@@ -21,11 +21,8 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
 	public List<Employee> getAllEmployees() {
-		logger.info("employeeRepository : " + employeeRepository);
 		
 		List<Employee> list = (List<Employee>)employeeRepository.findAll();
-		logger.info("Employee List : " + list);
-		
 		return list;
 	}
 
