@@ -10,13 +10,17 @@ public class DBFile {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name="file_id")
     private String id;
-
+    
+    @Column(name="file_name")
     private String fileName;
-
+    
+    @Column(name="file_type")
     private String fileType;
-
+    
     @Lob
+    @Column(name="file_data")
     private byte[] data;
 
     public DBFile() {

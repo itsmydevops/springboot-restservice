@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Employee {
 
 	@Id
-	@Column(name="id")
+	@Column(name="employee_id")
 	private long employee_id;
 	
-	@Column(name="name")
+	@Column(name="employee_name")
 	private String employee_name;
 	
-	@Column(name="country")
+	@Column(name="employee_city")
 	private String employee_city;
 	
 	public Employee() {
