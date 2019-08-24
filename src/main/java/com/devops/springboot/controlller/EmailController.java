@@ -42,6 +42,7 @@ public class EmailController {
     public String sendMailAttachment() throws MessagingException {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message,true);
+        
         try {
             helper.setTo("sridevi.bathuru@gmail.com");
             helper.setSubject("Mail From Spring Boot");
