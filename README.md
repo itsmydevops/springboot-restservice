@@ -5,7 +5,7 @@
 # 3)File upload/download operations 
 
 # :::::EMPLOYEE TABLE::::
-# create table employee (employee_id int, emplopyee_name varchar(50),employee_city varchar(50));
+# create table employee (employee_id int, employee_name varchar(50),employee_city varchar(50));
 # select * from portal.employee
 # drop table portal.employee 
 
