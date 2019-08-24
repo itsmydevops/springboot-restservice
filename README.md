@@ -10,7 +10,7 @@
 # drop table portal.employee 
 
 
-# create table employee (employee_id int, emplopyee_name varchar(50),employee_city varchar(50));
+# create table portal.employee (employee_id int, emplopyee_name varchar(50),employee_city varchar(50));
 # select * from portal.employee
 # drop table portal.employee 
 
